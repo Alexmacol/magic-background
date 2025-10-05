@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @media (max-width: 768px) {
   .header h1 {
     font-size: 32px;
@@ -24,3 +25,31 @@
     font-size: 16px;
   }
 }
+=======
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 32px;
+  }
+
+  .header .subtitle {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .card-header {
+    font-size: 16px;
+  }
+
+  .code-grid {
+    flex-direction: column;
+  }
+
+  .code-card {
+    width: 100%;
+  }
+
+  .form-group .btn-magic {
+    font-size: 16px;
+  }
+}
+>>>>>>> a0a95efe78957b96060521dfbcc7974527ac83c8

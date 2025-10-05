@@ -20,7 +20,11 @@ body {
   font-size: 48px;
   letter-spacing: 2px;
   text-align: center;
+<<<<<<< HEAD
   background-image: linear-gradient(90deg, #ffffff 0% , #5eead4 50%, #a655f7 100%);
+=======
+  background-image: linear-gradient(90deg, #5b50f5 0%, #ff80aa 50%, #a655f7 100%);
+>>>>>>> a0a95efe78957b96060521dfbcc7974527ac83c8
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -78,7 +82,11 @@ body {
   border: 1px;
   border-radius: 8px;
   padding: 16px 32px;
+<<<<<<< HEAD
   background: linear-gradient(90deg, #5eead4 0%, #a655f7 100%);
+=======
+  background: linear-gradient(90deg, #a655f7 0%, #ff80aa 100%);
+>>>>>>> a0a95efe78957b96060521dfbcc7974527ac83c8
   color: #ffffff;
   font-size: 18px;
   cursor: pointer;
@@ -87,6 +95,7 @@ body {
 
 .form-group .btn-magic:hover {
   transform: translateY(-2px);
+<<<<<<< HEAD
   background: linear-gradient(90deg, #a655f7 0%, #5eead4 100%);
 }
 
@@ -94,6 +103,9 @@ body {
   background: #a655f7;
   cursor: not-allowed;
   transform: none;
+=======
+  background: linear-gradient(90deg, #ff80aa 0%, #a655f7 100%);
+>>>>>>> a0a95efe78957b96060521dfbcc7974527ac83c8
 }
 
 .preview-card{

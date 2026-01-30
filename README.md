@@ -1,7 +1,7 @@
 # Magic Background Generator
 
 Bem-vindo ao Magic Background, uma aplicação de código aberto projetada para gerar fundos de tela dinâmicos a partir de descrições de texto, utilizando o poder da Inteligência Artificial.
-**Atenção:** Este projeto **depende de ambiente n8n** para funcionamento completo.
+**Atenção:** Este projeto **depende de ambiente n8n pago** para funcionamento completo.
 
 ## ✨ Funcionalidades
 

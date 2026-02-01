@@ -6,13 +6,13 @@
   Uma aplicação web interativa que utiliza Inteligência Artificial para transformar descrições textuais em códigos CSS e HTML de backgrounds prontos para uso. Simplifique seu processo criativo gerando fundos visuais únicos instantaneamente com preview em tempo real.
 </p>
 
-![Preview da Aplicação](assets/images/Captura%20de%20tela%202026-02-01%20181904.png)
+![Preview da Aplicação](assets\images\project-preview.webp)
 
 ## 📖 Sobre o Projeto
 
 O **Magic Background** é uma ferramenta front-end desenvolvida para otimizar o fluxo de trabalho de designers e desenvolvedores. A aplicação atua como uma interface cliente moderna que consome serviços de **automação n8n** para converter linguagem natural em código visual. **DISCLAIMER**: ESTE PROJETO DEPENDE DE AMBIENTE N8N ATIVO (PAGO) PARA FUNCIONAR COMPLETAMENTE.
 
-![Preview da Aplicação](assets/images/Captura%20de%20tela%202026-02-01%20173342.png)
+![Preview da Aplicação](assets\images\projeto-n8n.webp)
 
 O objetivo é abstrair a complexidade da criação de estilos CSS avançados, permitindo que o usuário foque na intenção criativa. Através de uma arquitetura limpa e reativa, o sistema gerencia a comunicação com o backend, trata os estados da aplicação e renderiza os resultados dinamicamente no DOM.
 

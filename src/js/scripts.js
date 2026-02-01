@@ -7,87 +7,65 @@ document.addEventListener("DOMContentLoaded", function () {
   const cssCode = document.getElementById("css-code");
   const previewSection = document.getElementById("preview-section");
 
-  // --- Event Listeners ---
-  form.addEventListener("submit", handleFormSubmit);
-
-  // Configurar botões de cópia
-  document.querySelectorAll(".copy-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-target");
-      const codeElement = document.getElementById(targetId);
-      if (codeElement && codeElement.textContent) {
-        copyToClipboard(codeElement.textContent, btn);
-      }
-    });
-  });
-
-  // --- Funções Principais ---
-  async function handleFormSubmit(event) {
+  form.addEventListener("submit", async function (event) {
     event.preventDefault();
     const descricao = descricaoInput.value.trim();
+    console.log("Campo de descrição:", descricao);
 
-    if (!descricao) return;
+    if (!descricao) {
+      return;
+    }
 
     showLoading(true);
 
+    //** Envio ao n8n **
     try {
-      const dados = await fetchBackgroundData(descricao);
-      updateInterface(dados);
+      const resposta = await fetch(
+        "https://alexmacol.app.n8n.cloud/webhook/projeto-fundo-magico",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ descricao }),
+        },
+      );
+
+      const dados = await resposta.json();
+      // Preencher os campos de código com a resposta
+      htmlCode.textContent = dados.html || "";
+      cssCode.textContent = dados.css || "";
+
+      // Atualizar a seção de pré-visualização
+      previewSection.innerHTML = dados.html || "";
+
+      // Exibe a seção de pré-visualização
+      previewSection.style.display = "block";
+
+      // Exibir o card de previsualização
+      let styleTag = document.getElementById("dynamic-styles");
+
+      //Se a tag de estilos já existe, removê-la antes de criar uma nova
+      if (styleTag) {
+        styleTag.remove();
+      }
+
+      if (dados.css) {
+        styleTag = document.createElement("style");
+        styleTag.id = "dynamic-styles";
+        styleTag.textContent = dados.css;
+        document.head.appendChild(styleTag);
+      }
     } catch (error) {
-      handleError(error);
+      console.error("Erro ao enviar a requisição:", error);
+      htmlCode.textContent =
+        "Não foi possível gerar o código. Tente novamente.";
+      cssCode.textContent = "Não foi possível gerar o código. Tente novamente.";
+      previewSection.style.display = "none";
     } finally {
       showLoading(false);
     }
-  }
-
-  // --- Lógica de API ---
-  async function fetchBackgroundData(descricao) {
-    const resposta = await fetch(
-      "https://alexmacol.app.n8n.cloud/webhook/projeto-fundo-magico",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ descricao }),
-      },
-    );
-
-    if (!resposta.ok) {
-      throw new Error(`Erro na API: ${resposta.status}`);
-    }
-
-    return await resposta.json();
-  }
-
-  // --- Lógica de UI ---
-  function updateInterface(dados) {
-    // Preencher códigos
-    htmlCode.textContent = dados.html || "";
-    cssCode.textContent = dados.css || "";
-
-    // Atualizar Preview HTML
-    previewSection.innerHTML = dados.html || "";
-    previewSection.style.display = "block";
-
-    // Atualizar Preview CSS (Style Tag)
-    let styleTag = document.getElementById("dynamic-styles");
-    if (styleTag) styleTag.remove();
-
-    if (dados.css) {
-      styleTag = document.createElement("style");
-      styleTag.id = "dynamic-styles";
-      styleTag.textContent = dados.css;
-      document.head.appendChild(styleTag);
-    }
-  }
-
-  function handleError(error) {
-    console.error("Erro ao enviar a requisição:", error);
-    /* Tratamento de erros: Rede, 500, 429, 404, 400 */
-    const msgErro = "Não foi possível gerar o código. Tente novamente.";
-    htmlCode.textContent = msgErro;
-    cssCode.textContent = msgErro;
-    previewSection.style.display = "none";
-  }
+  });
 
   function showLoading(isLoading) {
     if (isLoading) {
@@ -98,23 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       btnSend.disabled = false;
       btnText.textContent = "Gerar Background Mágico";
-    }
-  }
-
-  async function copyToClipboard(text, btnElement) {
-    try {
-      await navigator.clipboard.writeText(text);
-      const originalText = btnElement.textContent;
-      btnElement.textContent = "Copiado!";
-      setTimeout(() => {
-        btnElement.textContent = originalText;
-      }, 2000);
-    } catch (err) {
-      console.error("Falha ao copiar:", err);
-      btnElement.textContent = "Erro!";
-      setTimeout(() => {
-        btnElement.textContent = "Copiar";
-      }, 2000);
     }
   }
 });

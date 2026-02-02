@@ -78,4 +78,20 @@ document.addEventListener("DOMContentLoaded", function () {
       btnText.textContent = "Gerar Background Mágico";
     }
   }
+
+  // Funcionalidade de Copiar para a Área de Transferência
+  document.querySelectorAll(".copy-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const codeElement = document.getElementById(targetId);
+
+      if (codeElement && codeElement.textContent) {
+        navigator.clipboard.writeText(codeElement.textContent).then(() => {
+          const originalText = btn.textContent;
+          btn.textContent = "Copiado!";
+          setTimeout(() => (btn.textContent = originalText), 2000);
+        });
+      }
+    });
+  });
 });

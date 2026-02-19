@@ -151,3 +151,92 @@ body {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+/* Modal Alert */
+.modal-alert {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+
+  /* Estado fechado */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+/* Estado aberto */
+.modal-alert.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Conteúdo da modal */
+.modal-content {
+  background: rgba(30, 30, 40, 0.95);
+  border: 2px solid #00ffff;
+  padding: 32px;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+
+  transform: translateY(-10px) scale(0.96);
+  opacity: 0;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* Animação de entrada */
+.modal-alert.show .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Animação de saída */
+.modal-alert.closing .modal-content {
+  transform: translateY(-10px) scale(0.96);
+  opacity: 0;
+}
+
+/* Texto */
+#alert-message {
+  font-family: "Orbitron", sans-serif;
+  font-size: 18px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+/* Botão */
+.close-button {
+  background-color: #00ffff;
+  color: #2d004d;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 15px #00ffff;
+}

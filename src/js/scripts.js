@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const API_ENDPOINT =
+    "https://alexmacol1970.app.n8n.cloud/webhook/projeto-fundo-magico";
   const form = document.querySelector(".form-group");
   const descricaoInput = document.getElementById("description");
   const btnSend = document.getElementById("generate-btn");
@@ -20,9 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //** Envio ao n8n **
     try {
-      const resposta = await fetch(
-        "https://alexmacol.app.n8n.cloud/webhook/projeto-fundo-magico",
-        {
+      const resposta = await fetch(API_ENDPOINT, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

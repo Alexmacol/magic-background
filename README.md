@@ -14,7 +14,6 @@ O **Magic Background** é uma ferramenta front-end desenvolvida para otimizar o 
 
 O objetivo é abstrair a complexidade da criação de estilos CSS avançados, permitindo que o usuário foque na intenção criativa. Através de uma arquitetura limpa e reativa, o sistema gerencia a comunicação com o backend, trata os estados da aplicação e renderiza os resultados dinamicamente no DOM.
 
-![Workflow n8n](assets/images/projeto-n8n.webp)
 
 ---
 
@@ -35,6 +34,8 @@ O objetivo é abstrair a complexidade da criação de estilos CSS avançados, pe
 - **JavaScript Vanilla:** Lógica de controle assíncrono (`async/await`), manipulação do DOM e Event Listeners sem dependência de frameworks.
 - **Fetch API:** Para comunicação RESTful com o backend.
 - **n8n (Automação de Workflow):** Integração via Webhook para processamento inteligente das descrições com o modelo de IA **Google Gemini**.
+
+![Workflow n8n](assets/images/projeto-n8n.webp)
 
 ---
 

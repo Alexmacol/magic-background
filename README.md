@@ -1,71 +1,91 @@
-<h1 align="center">
-  <img src="https://placehold.co/600x100/F7DF1E/000000?text=Magic+Background&font=roboto" alt="Magic Background">
-</h1>
+# ✨ Magic Background
 
-<p align="center">
-  Uma aplicação web interativa que utiliza Inteligência Artificial para transformar descrições textuais em códigos CSS e HTML de backgrounds prontos para uso. Simplifique seu processo criativo gerando fundos visuais únicos instantaneamente com preview em tempo real.
-</p>
+> ⚠️ **ATENÇÃO:** Este projeto depende de um ambiente n8n ativo (pago) para funcionar completamente. Sem um workflow n8n configurado e em execução, a geração de backgrounds não será processada.
+
+Uma aplicação web interativa que utiliza Inteligência Artificial para transformar descrições textuais em códigos CSS e HTML de backgrounds prontos para uso. Simplifique seu processo criativo gerando fundos visuais únicos instantaneamente com preview em tempo real.
 
 ![Preview da Aplicação](assets/images/project-preview.webp)
 
-## 📖 Sobre o Projeto
+---
 
-O **Magic Background** é uma ferramenta front-end desenvolvida para otimizar o fluxo de trabalho de designers e desenvolvedores. A aplicação atua como uma interface cliente moderna que consome serviços de **automação n8n** para converter linguagem natural em código visual. **DISCLAIMER**: ESTE PROJETO DEPENDE DE AMBIENTE N8N ATIVO (PAGO) PARA FUNCIONAR COMPLETAMENTE.
+## 🧐 Sobre o Projeto
 
-![Preview da Aplicação](assets/images/projeto-n8n.webp)
+O **Magic Background** é uma ferramenta front-end desenvolvida para otimizar o fluxo de trabalho de designers e desenvolvedores. A aplicação atua como uma interface cliente moderna que consome serviços de automação **n8n** para converter linguagem natural em código visual.
 
 O objetivo é abstrair a complexidade da criação de estilos CSS avançados, permitindo que o usuário foque na intenção criativa. Através de uma arquitetura limpa e reativa, o sistema gerencia a comunicação com o backend, trata os estados da aplicação e renderiza os resultados dinamicamente no DOM.
 
-## 🚀 Funcionalidades Principais
+![Workflow n8n](assets/images/projeto-n8n.webp)
 
-- **Geração via Prompt**: Input de texto intuitivo para descrever o background desejado.
-- **Renderização Dinâmica**: O código recebido é injetado automaticamente na página para um preview fiel e imediato.
-- **Gestão de Feedback**: Indicadores visuais de carregamento ("loading states") e tratamento de erros de requisição para melhor UX.
-- **Exportação de Código**: Botões dedicados com funcionalidade de "Copiar para a Área de Transferência" para HTML e CSS separadamente.
-- **Interface Responsiva**: Layout adaptável construído com CSS moderno (Flexbox/Grid).
+---
 
-## 🛠 Tecnologias e Métodos
+## ✨ Funcionalidades Principais
 
-- **Frontend**: HTML5 Semântico e CSS3 (com uso de variáveis e reset CSS).
-- **JavaScript (Vanilla)**: Lógica de controle assíncrono (`async/await`), manipulação do DOM e Event Listeners sem dependência de frameworks.
-- **Integração de API**: Uso da `Fetch API` para comunicação RESTful.
-- **Backend/Automação**: Integração com **n8n** via Webhook para processamento inteligente das descrições.
+- **Geração via Prompt:** Input de texto intuitivo para descrever o background desejado.
+- **Renderização Dinâmica:** O código recebido é injetado automaticamente na página para um preview fiel e imediato.
+- **Gestão de Feedback:** Indicadores visuais de carregamento ("loading states") e tratamento de erros de requisição para melhor UX.
+- **Exportação de Código:** Botões dedicados com funcionalidade de "Copiar para a Área de Transferência" para HTML e CSS separadamente.
+- **Interface Responsiva:** Layout adaptável construído com CSS moderno (Flexbox/Grid).
 
-## 🏗 Arquitetura da API
+---
+
+## 🛠️ Tecnologias e Métodos
+
+- **HTML5 Semântico:** Para melhor acessibilidade e SEO.
+- **CSS3:** Com uso de variáveis e reset CSS.
+- **JavaScript Vanilla:** Lógica de controle assíncrono (`async/await`), manipulação do DOM e Event Listeners sem dependência de frameworks.
+- **Fetch API:** Para comunicação RESTful com o backend.
+- **n8n (Automação de Workflow):** Integração via Webhook para processamento inteligente das descrições com o modelo de IA **Google Gemini**.
+
+---
+
+## 🌐 Arquitetura da Aplicação
 
 A aplicação segue um padrão de comunicação cliente-servidor simples e eficiente:
 
-1.  **Endpoint**: O frontend dispara uma requisição `POST` para o webhook configurado no n8n:
-    `https://alexmacol.app.n8n.cloud/webhook/projeto-fundo-magico`
+1. **Frontend:** Coleta a descrição textual do usuário.
+2. **Integração (n8n):** O frontend dispara uma requisição `POST` para um webhook hospedado no **n8n.cloud**.
+3. **Processamento:** O n8n processa a solicitação integrando o modelo de IA **Google Gemini** para interpretar a descrição e gerar o código CSS e HTML correspondente.
+4. **Resposta:** O backend retorna um objeto JSON com os fragmentos de código prontos para uso:
 
-2.  **Payload (Envio)**: Os dados são enviados no corpo da requisição em formato JSON:
+```json
+{
+  "html": "<div>...</div>",
+  "css": ".classe { ... }"
+}
+```
 
-    ```json
-    {
-      "descricao": "Sua descrição do background aqui"
-    }
-    ```
+O JavaScript do cliente então injeta o CSS em uma tag `<style>` dinâmica para aplicar o visual instantaneamente.
 
-3.  **Response (Recebimento)**: A API processa a solicitação e retorna um objeto JSON contendo os fragmentos de código:
-    ```json
-    {
-      "html": "<div>...</div>",
-      "css": ".classe { ... }"
-    }
-    ```
-    _O JavaScript do cliente então injeta o CSS em uma tag `<style>` dinâmica para aplicar o visual instantaneamente._
+---
 
-## ⚡ Como Executar
+## 🚀 Como Executar
 
 Este projeto não requer instalação de dependências ou processos de build (como npm ou webpack), pois utiliza tecnologias web nativas.
 
-1.  **Clone o repositório** para sua máquina local.
-2.  Navegue até a pasta do projeto:
-    ```bash
-    cd projeto-fundomagico
-    ```
-3.  **Abra o arquivo `index.html`** diretamente em seu navegador preferido (Chrome, Firefox, Edge, etc).
-    - _Dica_: Para evitar bloqueios de segurança (CORS) que alguns navegadores impõem a arquivos locais, recomenda-se usar uma extensão como o "Live Server" no VS Code.
+**Pré-requisitos:**
+- Conta ativa no [n8n.cloud](https://n8n.io) com o workflow configurado e em execução
+- Chave de API do [Google Gemini](https://aistudio.google.com/)
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/seu-usuario/projeto-fundomagico.git
+   ```
+
+2. **Acesse a pasta do projeto:**
+   ```bash
+   cd projeto-fundomagico
+   ```
+
+3. **Configure as variáveis de ambiente:**
+
+   Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
+   ```env
+   N8N_WEBHOOK_URL=sua-url-do-webhook-n8n
+   ```
+
+4. **Abra o projeto:**
+   - Basta abrir o arquivo `index.html` em qualquer navegador moderno.
+   - **Dica:** Para evitar bloqueios de segurança (CORS), recomenda-se usar a extensão **Live Server** no VS Code.
 
 ---
 

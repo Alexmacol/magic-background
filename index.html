@@ -19,6 +19,9 @@
       rel="stylesheet" />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
       href="src/css/reset.css" />
     <link
       rel="stylesheet"
@@ -43,7 +46,10 @@
             rows="5"
             id="description"
             placeholder="Ex: Um gradiente azul suave que vai de azul claro ao azul escuro"></textarea>
-          <button id="generate-btn" class="magic-btn" type="submit">
+          <button
+            id="generate-btn"
+            class="magic-btn"
+            type="submit">
             <span id="btn-text">Gerar Background Mágico</span>
           </button>
         </form>
@@ -59,7 +65,11 @@
         <div class="card code-card">
           <div class="code-header">
             <h3 class="code-title">Código HTML</h3>
-            <button class="copy-btn" data-target="html-code">Copiar</button>
+            <button
+              class="copy-btn"
+              data-target="html-code">
+              Copiar
+            </button>
           </div>
           <pre
             id="html-code"
@@ -68,7 +78,11 @@
         <div class="card code-card">
           <div class="code-header">
             <h3 class="code-title">Código CSS</h3>
-            <button class="copy-btn" data-target="css-code">Copiar</button>
+            <button
+              class="copy-btn"
+              data-target="css-code">
+              Copiar
+            </button>
           </div>
           <pre
             id="css-code"
@@ -77,7 +91,7 @@
       </section>
     </main>
 
-        <!-- Modal de Alerta Customizavel -->
+    <!-- Modal de Alerta Customizavel -->
     <div
       id="custom-alert"
       class="modal-alert">
@@ -90,6 +104,32 @@
         </button>
       </div>
     </div>
+
+    <footer class="footer">
+      <div class="interface">
+        <ul class="footer-links">
+          <li>
+            <a
+              href="https://github.com/Alexmacol"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visitar perfil no GitHub">
+              <i class="fa-brands fa-github footer-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:alexmacol@gmail.com"
+              aria-label="Enviar email">
+              <i class="fa-solid fa-envelope footer-icon"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="footer-text-center">
+          <p>Todos os direitos reservados © 2026</p>
+        </div>
+      </div>
+    </footer>
 
     <script src="src/js/scripts.js"></script>
   </body>

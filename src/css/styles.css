@@ -15,7 +15,9 @@ body {
 
 .header h1 {
   margin-bottom: 16px;
+  font-family: "Inter", sans-serif;
   font-size: 48px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2.5px;
 }
@@ -181,7 +183,6 @@ body {
   width: 100%;
   color: #a655f7;
   padding: 15px 0;
-  font-family: "Orbitron", sans-serif;
   font-size: 0.8rem;
   box-sizing: border-box;
 }

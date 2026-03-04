@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const htmlCode = document.getElementById("html-code");
   const cssCode = document.getElementById("css-code");
   const previewSection = document.getElementById("preview-section");
+  const regenerateContainer = document.getElementById("regenerate");
+  const regenerateBtn = document.getElementById("regenerate-btn");
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -39,8 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Atualizar a seção de pré-visualização
       previewSection.innerHTML = dados.html || "";
 
-      // Exibe a seção de pré-visualização
+      // Exibe a seção de pré-visualização e o botão de gerar novo
       previewSection.style.display = "block";
+      regenerateContainer.style.display = "flex";
 
       // Exibir o card de previsualização
       let styleTag = document.getElementById("dynamic-styles");
@@ -62,9 +65,32 @@ document.addEventListener("DOMContentLoaded", function () {
         "Não foi possível gerar o código. Tente novamente.";
       cssCode.textContent = "Não foi possível gerar o código. Tente novamente.";
       previewSection.style.display = "none";
+      regenerateContainer.style.display = "none";
     } finally {
       showLoading(false);
     }
+  });
+
+  // Botão Gerar Novo Background
+  regenerateBtn.addEventListener("click", function () {
+    // Limpa campos
+    descricaoInput.value = "";
+    htmlCode.textContent = "";
+    cssCode.textContent = "";
+    previewSection.innerHTML = "";
+
+    // Oculta seções
+    previewSection.style.display = "none";
+    regenerateContainer.style.display = "none";
+
+    // Remove estilos dinâmicos
+    const styleTag = document.getElementById("dynamic-styles");
+    if (styleTag) {
+      styleTag.remove();
+    }
+    
+    // Foca novamente no campo de texto para facilitar o uso
+    descricaoInput.focus();
   });
 
   function showLoading(isLoading) {

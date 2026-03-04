@@ -61,13 +61,16 @@ body {
 .form-group textarea:focus {
   outline: none;
   border-color: #a655f7;
+    caret-color: #a655f7;
+  caret-shape: block;
+
 }
 
 .form-group textarea::placeholder {
   color: #a19e9e;
 }
 
-.form-group .magic-btn {
+.form-group .magic-btn, .regenerate-btn {
   width: 100%;
   padding: 16px 32px;
   display: block;
@@ -79,10 +82,17 @@ body {
   color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: "Roboto Mono", monospace, sans-serif;
 }
 
-.form-group .magic-btn:hover {
+.form-group .magic-btn:hover, .regenerate-btn:hover {
   transform: translateY(-2px)
+}
+
+.regenerate-container {
+  display: none;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .magic-btn:disabled {
@@ -277,20 +287,3 @@ body {
   color: #ffffff;
 }
 
-/* Botão */
-.close-button {
-  background-color: #00ffff;
-  color: #2d004d;
-  border: none;
-  padding: 12px 32px;
-  border-radius: 8px;
-  font-family: "Orbitron", sans-serif;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.close-button:hover {
-  background-color: #ffffff;
-  box-shadow: 0 0 15px #00ffff;
-}

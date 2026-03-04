@@ -4,7 +4,7 @@
 
 Uma aplicação web interativa que utiliza Inteligência Artificial para transformar descrições textuais em códigos CSS e HTML de backgrounds prontos para uso. Simplifique seu processo criativo gerando fundos visuais únicos instantaneamente com preview em tempo real.
 
-![Preview da Aplicação](assets/images/project-preview.webp)
+[![Preview da Aplicação](assets/images/project-preview.webp)](https://magic-background.vercel.app/)
 
 ---
 
@@ -13,7 +13,6 @@ Uma aplicação web interativa que utiliza Inteligência Artificial para transfo
 O **Magic Background** é uma ferramenta front-end desenvolvida para otimizar o fluxo de trabalho de designers e desenvolvedores. A aplicação atua como uma interface cliente moderna que consome serviços de automação **n8n** para converter linguagem natural em código visual.
 
 O objetivo é abstrair a complexidade da criação de estilos CSS avançados, permitindo que o usuário foque na intenção criativa. Através de uma arquitetura limpa e reativa, o sistema gerencia a comunicação com o backend, trata os estados da aplicação e renderiza os resultados dinamicamente no DOM.
-
 
 ---
 
@@ -64,15 +63,18 @@ O JavaScript do cliente então injeta o CSS em uma tag `<style>` dinâmica para 
 Este projeto não requer instalação de dependências ou processos de build (como npm ou webpack), pois utiliza tecnologias web nativas.
 
 **Pré-requisitos:**
+
 - Conta ativa no [n8n.cloud](https://n8n.io) com o workflow configurado e em execução
 - Chave de API do [Google Gemini](https://aistudio.google.com/)
 
 1. **Clone o repositório:**
+
    ```bash
    git clone https://github.com/seu-usuario/projeto-fundomagico.git
    ```
 
 2. **Acesse a pasta do projeto:**
+
    ```bash
    cd projeto-fundomagico
    ```
@@ -80,6 +82,7 @@ Este projeto não requer instalação de dependências ou processos de build (co
 3. **Configure as variáveis de ambiente:**
 
    Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
+
    ```env
    N8N_WEBHOOK_URL=sua-url-do-webhook-n8n
    ```

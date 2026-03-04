@@ -1,3 +1,6 @@
+import { showAlert } from "./modal.js";
+import { renderPreview, resetUI } from "./ui.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const API_ENDPOINT =
     "https://alexmacol1970.app.n8n.cloud/webhook/projeto-fundo-magico";
@@ -17,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Campo de descrição:", descricao);
 
     if (!descricao) {
+      showAlert("Digite o background que deseja!");
       return;
     }
 
@@ -34,31 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       const dados = await resposta.json();
+      
       // Preencher os campos de código com a resposta
       htmlCode.textContent = dados.html || "";
       cssCode.textContent = dados.css || "";
 
-      // Atualizar a seção de pré-visualização
-      previewSection.innerHTML = dados.html || "";
+      // Usar a função renderPreview do módulo ui.js
+      renderPreview(previewSection, regenerateContainer, dados.html, dados.css);
 
-      // Exibe a seção de pré-visualização e o botão de gerar novo
-      previewSection.style.display = "block";
-      regenerateContainer.style.display = "flex";
-
-      // Exibir o card de previsualização
-      let styleTag = document.getElementById("dynamic-styles");
-
-      //Se a tag de estilos já existe, removê-la antes de criar uma nova
-      if (styleTag) {
-        styleTag.remove();
-      }
-
-      if (dados.css) {
-        styleTag = document.createElement("style");
-        styleTag.id = "dynamic-styles";
-        styleTag.textContent = dados.css;
-        document.head.appendChild(styleTag);
-      }
     } catch (error) {
       console.error("Erro ao enviar a requisição:", error);
       htmlCode.textContent =
@@ -71,26 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Botão Gerar Novo Background
+  // Botão Gerar Novo Background (usando resetUI do módulo ui.js)
   regenerateBtn.addEventListener("click", function () {
-    // Limpa campos
-    descricaoInput.value = "";
-    htmlCode.textContent = "";
-    cssCode.textContent = "";
-    previewSection.innerHTML = "";
-
-    // Oculta seções
-    previewSection.style.display = "none";
-    regenerateContainer.style.display = "none";
-
-    // Remove estilos dinâmicos
-    const styleTag = document.getElementById("dynamic-styles");
-    if (styleTag) {
-      styleTag.remove();
-    }
-    
-    // Foca novamente no campo de texto para facilitar o uso
-    descricaoInput.focus();
+    resetUI(previewSection, regenerateContainer, descricaoInput, htmlCode, cssCode);
   });
 
   function showLoading(isLoading) {

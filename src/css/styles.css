@@ -251,13 +251,13 @@ body {
 /* Conteúdo da modal */
 .modal-content {
   background: rgba(30, 30, 40, 0.95);
-  border: 2px solid #00ffff;
+  border: 2px solid #a655f7;
   padding: 32px;
   border-radius: 16px;
   max-width: 400px;
   width: 90%;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(166, 85, 247, 0.2);
 
   transform: translateY(-10px) scale(0.96);
   opacity: 0;
@@ -266,6 +266,25 @@ body {
     transform 0.25s ease,
     opacity 0.25s ease;
 }
+
+/* Botão */
+.close-button {
+  background-color: #a655f7;
+  color: #ffffff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: #ff6f9f;
+  box-shadow: 0 0 15px #a655f7;
+}
+
 
 /* Animação de entrada */
 .modal-alert.show .modal-content {
@@ -281,7 +300,7 @@ body {
 
 /* Texto */
 #alert-message {
-  font-family: "Orbitron", sans-serif;
+  font-family: "Roboto-Mono", sans-serif;
   font-size: 18px;
   margin-bottom: 24px;
   line-height: 1.5;

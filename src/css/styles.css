@@ -23,6 +23,8 @@ body {
 }
 
 .header .subtitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
   font-size: 19.2px;
   color: #ffffffcc;
   max-width: 700px;
@@ -43,6 +45,7 @@ body {
 .card-header {
   text-align: center;
   margin-bottom: 32px;
+  font-family: "Inter", sans-serif;
   font-size: 20.8px;
 }
 .form-group textarea {
@@ -63,32 +66,34 @@ body {
 .form-group textarea:focus {
   outline: none;
   border-color: #a655f7;
-    caret-color: #a655f7;
+  caret-color: #a655f7;
   caret-shape: block;
-
 }
 
 .form-group textarea::placeholder {
   color: #a19e9e;
 }
 
-.form-group .magic-btn, .regenerate-btn {
+.form-group .magic-btn,
+.regenerate-btn {
   width: 100%;
   padding: 16px 32px;
   display: block;
   border: none;
   border-radius: 8px;
   background: linear-gradient(90deg, #a655f7 0%, #ff6f9f 100%);
+  font-family: "Inter", sans-serif;
   font-size: 17.6px;
   font-weight: 600;
+  /* letter-spacing: 1.5px; */
   color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Roboto Mono", monospace, sans-serif;
 }
 
-.form-group .magic-btn:hover, .regenerate-btn:hover {
-  transform: translateY(-2px)
+.form-group .magic-btn:hover,
+.regenerate-btn:hover {
+  transform: translateY(-2px);
 }
 
 .regenerate-container {
@@ -116,16 +121,16 @@ body {
   }
 }
 
-.preview-card{
+.preview-card {
   display: none;
 }
 
-.code-grid{
+.code-grid {
   display: flex;
   gap: 24px;
 }
 
-.code-card{
+.code-card {
   width: 50%;
   padding: 24px;
   background-color: #21242a;
@@ -139,7 +144,7 @@ body {
   margin-bottom: 16px;
 }
 
-.code-title{
+.code-title {
   text-align: left;
   font-size: 20px;
   margin-bottom: 0;
@@ -166,7 +171,7 @@ body {
   transform: translateY(1px);
 }
 
-.code-block{
+.code-block {
   background-color: #0a0c10;
   padding: 16px;
   border-radius: 8px;
@@ -274,7 +279,7 @@ body {
   border: none;
   padding: 12px 32px;
   border-radius: 8px;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -284,7 +289,6 @@ body {
   background-color: #ff6f9f;
   box-shadow: 0 0 15px #a655f7;
 }
-
 
 /* Animação de entrada */
 .modal-alert.show .modal-content {
@@ -306,4 +310,3 @@ body {
   line-height: 1.5;
   color: #ffffff;
 }
-

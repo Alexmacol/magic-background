@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Feedback amigável usando o modal
       showAlert(
-        "A IA está um pouco ocupada ou houve um erro na conexão. Por favor, tente novamente em alguns instantes!"
+        "A IA está processando muitas ideias agora ou houve um erro na conexão. Por favor, tente novamente em alguns instantes!"
       );
 
       htmlCode.textContent = "Não foi possível gerar o código no momento.";

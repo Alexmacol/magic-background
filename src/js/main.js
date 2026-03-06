@@ -29,28 +29,41 @@ document.addEventListener("DOMContentLoaded", function () {
     //** Envio ao n8n **
     try {
       const resposta = await fetch(API_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ descricao }),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({ descricao }),
+      });
+
+      // Verifica se o servidor retornou um erro 
+      if (!resposta.ok) {
+        throw new Error(`Erro no servidor: ${resposta.status}`);
+      }
 
       const dados = await resposta.json();
-      
+
+      // Verifica se a resposta contém os campos esperados
+      if (!dados || (!dados.html && !dados.css)) {
+        throw new Error("A resposta da IA veio vazia ou incompleta.");
+      }
+
       // Preencher os campos de código com a resposta
       htmlCode.textContent = dados.html || "";
       cssCode.textContent = dados.css || "";
 
       // Usar a função renderPreview do módulo ui.js
       renderPreview(previewSection, regenerateContainer, dados.html, dados.css);
-
     } catch (error) {
       console.error("Erro ao enviar a requisição:", error);
-      htmlCode.textContent =
-        "Não foi possível gerar o código. Tente novamente.";
-      cssCode.textContent = "Não foi possível gerar o código. Tente novamente.";
+
+      // Feedback amigável usando o modal
+      showAlert(
+        "A IA está um pouco ocupada ou houve um erro na conexão. Por favor, tente novamente em alguns instantes!"
+      );
+
+      htmlCode.textContent = "Não foi possível gerar o código no momento.";
+      cssCode.textContent = "Não foi possível gerar o código no momento.";
       previewSection.style.display = "none";
       regenerateContainer.style.display = "none";
     } finally {

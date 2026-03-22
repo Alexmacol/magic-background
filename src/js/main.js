@@ -3,7 +3,7 @@ import { renderPreview, resetUI } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const API_ENDPOINT =
-    "https://alexmacol2026fev-a.app.n8n.cloud/webhook/projeto-fundo-magico";
+    "https://alexmacol2026fev-b.app.n8n.cloud/webhook/projeto-fundo-magico";
   const form = document.querySelector(".form-group");
   const descricaoInput = document.getElementById("description");
   const btnSend = document.getElementById("generate-btn");
